@@ -15,7 +15,10 @@ var (
 	//url           = "https://duohao-prod-1306306153.file.myqcloud.com/aW7Jv2bd7B/tmp_1b1f5740269f487fd8f8ccd4047e45c0.jpg?imageView2/1/w/%d/h/%d/q/%d"
 
 	//url = "https://dn-odum9helk.qbox.me/resource/gogopher.jpg?imageView2/1/w/%d/h/%d/q/%d"
-	url = "https://duohao-prod-1306306153.file.myqcloud.com/wMpbZL6Wp9/NnChjdLo0C9K6085d57b5ee06ac7f793fa5f0f052cb5.jpg?imageView2/1/w/%d/h/%d/q/%d"
+	//url = "https://duohao-prod-1306306153.file.myqcloud.com/wMpbZL6Wp9/NnChjdLo0C9K6085d57b5ee06ac7f793fa5f0f052cb5.jpg?imageView2/1/w/%d/h/%d/q/%d"
+	url = "http://image1.test.hrai.online/自救设备.jpg?imageView2/1/w/%d/h/%d/q/%d"
+
+	//url = "https://duohao-test-1306306153.file.myqcloud.com/wMpbZL6Wp9/tmp_7c62b97ef43e703f98fd9b1ae91a797b.jpg?imageView2/1/w/%d/h/%d/q/%d"
 )
 
 func main() {
