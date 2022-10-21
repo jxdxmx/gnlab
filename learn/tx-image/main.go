@@ -19,6 +19,7 @@ var (
 	url = "http://image1.test.hrai.online/自救设备.jpg?imageView2/1/w/%d/h/%d/q/%d"
 
 	//url = "https://duohao-test-1306306153.file.myqcloud.com/wMpbZL6Wp9/tmp_7c62b97ef43e703f98fd9b1ae91a797b.jpg?imageView2/1/w/%d/h/%d/q/%d"
+
 )
 
 func main() {
@@ -26,10 +27,10 @@ func main() {
 	for j := 1; j <= 600; j++ {
 		fmt.Printf("=================== %s 第 %d 轮,开始时间 %s  ===================\n", time.Now().Format(time.RFC3339), j, startTime.Format(time.RFC3339))
 		var wg sync.WaitGroup
-		threads := 10
+		threads := 90
 		wg.Add(threads)
 		for i := 1; i <= threads; i++ {
-			go accessImage(&wg, i, 30+i*2)
+			go accessImage(&wg, i, 1+i)
 		}
 		wg.Wait()
 		time.Sleep(time.Second * 1)
@@ -40,6 +41,8 @@ func accessImage(wg *sync.WaitGroup, seq, percent int) {
 	defer func() { wg.Done() }()
 	w, h := width*percent/100, height*percent/100
 	newUrl := fmt.Sprintf(url, w, h, percent)
+	//newUrl := "http://image1.test.hrai.online/%E8%87%AA%E6%95%91%E8%AE%BE%E5%A4%872.jpg"
+
 	client := &http.Client{}
 	request, err := http.NewRequest("GET", newUrl, nil)
 	if err != nil {

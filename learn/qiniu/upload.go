@@ -13,7 +13,7 @@ var (
 	mac       = qbox.NewMac(accessKey, secretKey)
 )
 
-func upload() {
+func uploadLocalImg() {
 	bucket := "gnlab"
 	putPolicy := storage.PutPolicy{
 		Scope: bucket,
@@ -23,9 +23,9 @@ func upload() {
 	mac := qbox.NewMac(accessKey, secretKey)
 	upToken := putPolicy.UploadToken(mac)
 
-	localFile := "D:\\01.工作目录\\20221020-图片加载速度慢\\自救设备.jpg"
+	localFile := "D:\\01.工作目录\\20221020-图片加载速度慢\\equipment.webp"
 
-	key := "自救设备.jpg"
+	key := "equipment.webp"
 	cfg := storage.Config{}
 	// 空间对应的机房
 	cfg.Zone = &storage.ZoneHuadong
@@ -47,7 +47,6 @@ func upload() {
 		fmt.Println(err)
 		return
 	}
-	// http://rk1x9pnvh.hd-bkt.clouddn.com/自救设备.jpg?imageView2/1/w/200/h/200
-	fmt.Println(ret.Key, ret.Hash)
-
+	// http://image1.test.hrai.online/自救设备.jpg?imageView2/1/w/200/h/200
+	fmt.Println("http://image1.test.hrai.online/"+ret.Key, ret.Hash)
 }
