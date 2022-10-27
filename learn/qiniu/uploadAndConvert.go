@@ -78,8 +78,9 @@ func process(key string) (err error) {
 			continue
 		}
 		var m = map[int]string{0: "成功", 1: "等待处理", 2: "正在处理", 3: "处理失败"}
-		log.Println("处理状态:", m[ret.Items[0].Code])
-		if ret.Items[0].Code == 0 {
+		//log.Println("处理状态:", m[ret.Items[0].Code])
+		log.Println("处理状态:", m[ret.Code])
+		if ret.Code == 0 {
 			fmt.Println("已成功", time.Since(start))
 			break
 		}
