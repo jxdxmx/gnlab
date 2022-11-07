@@ -6,12 +6,24 @@ import (
 )
 
 func main() {
-	lat1 := 23.1378010917
-	lng1 := 113.4022203113
-	lat2 := 22.1191433172
-	lng2 := 113.5826193044
-	fmt.Println(GetDistance(lat1, lng1, lat2, lng2))
+	//lat1 := 23.1378010917
+	//lng1 := 113.4022203113
+	//lat2 := 22.1191433172
+	//lng2 := 113.5826193044
+	//fmt.Println(GetDistance(lat1, lng1, lat2, lng2))
 
+	lat02 := 23.1378010917
+	lng02 := 113.4022203113
+	fmt.Println("02：", lat02, lng02)
+	lat84, lng84 := gcj02ToWgs84(lat02, lng02)
+	fmt.Println("84：", lat84, lng84)
+	lat02_2, lng02_2 := wgs84ToGcj02(lat84, lng84)
+	fmt.Println("02-2：", lat02_2, lng02_2)
+	lat84_2, lng84_2 := gcj02ToWgs84(lat02_2, lng02_2)
+	fmt.Println("84-2：", lat84_2, lng84_2)
+
+	fmt.Println(GetDistance(lat02, lng02, lat02_2, lng02_2))
+	fmt.Println(GetDistance(lat84, lng84, lat84_2, lng84_2))
 }
 
 // https://blog.csdn.net/malimingwq/article/details/114950050
@@ -20,7 +32,7 @@ func main() {
 // 计算(lng2, lat2)是否在(lng1, lat1)的X米之内
 // select ST_DWithin(ST_SetSRID(ST_Point(lng1::double precision, lat1::double precision), 4326) :: geography,ST_GeomFromEWKT('SRID=4326;POINT(lng2 lat2)') :: geography, X)
 
-// GetDistance 返回单位为：千米
+// GetDistance 返回单位为：米
 // lat 维度  lng 经度
 // 自己参考网上公式写的代码 https://zhuanlan.zhihu.com/p/99338702 114.90138253718534
 func GetDistance(lat1, lng1, lat2, lng2 float64) float64 {
@@ -33,7 +45,7 @@ func GetDistance(lat1, lng1, lat2, lng2 float64) float64 {
 	deltaLat := lat2 - lat1
 	deltaLng := lng2 - lng1
 	dist := math.Asin(math.Pow(math.Pow(math.Sin(deltaLat/2), 2)+math.Cos(lat1)*math.Cos(lat2)*math.Pow(math.Sin(deltaLng/2), 2), 0.5))
-	return 2 * dist * radius / 1000
+	return 2 * dist * radius
 }
 
 //// 网上抄的代码 114.901382537215
