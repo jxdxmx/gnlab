@@ -9,6 +9,9 @@ const (
 	ee float64 = 0.00669342162296594323
 )
 
+// 坐标系相互转换的在线工具：https://tool.lu/coordinate/
+// 经测试，本代码和网上在线工具的实际运行结果完全相同
+
 // wgs84ToGcj02 84 to 火星坐标系 (GCJ-02) World Geodetic System ==> Mars Geodetic System
 func wgs84ToGcj02(lat84, lng84 float64) (lat02, lng02 float64) {
 	if outOfChina(lat84, lng84) {
@@ -58,11 +61,13 @@ func transformLng(x, y float64) float64 {
 	return ret
 }
 
-func outOfChina(lat84, lng84 float64) bool {
-	if lng84 < 73.66 || lng84 > 135.05 {
+// 中国的经纬度范围
+// 经度范围：73°33′E至135°05′E 纬度范围：3°51′N至53°33′N。
+func outOfChina(lat, lng float64) bool {
+	if lng < 73.33 || lng > 135.05 {
 		return true
 	}
-	if lat84 < 3.86 || lat84 > 53.55 {
+	if lat < 3.51 || lat > 53.33 {
 		return true
 	}
 	return false

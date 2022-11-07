@@ -24,6 +24,11 @@ func main() {
 
 	fmt.Println(GetDistance(lat02, lng02, lat02_2, lng02_2))
 	fmt.Println(GetDistance(lat84, lng84, lat84_2, lng84_2))
+
+	// 经度范围：73°33′E至135°05′E。
+	// 纬度范围：3°51′N至53°33′N。
+	fmt.Println(gcj02ToWgs84(3.51, 73.33))
+	fmt.Println(gcj02ToWgs84(53.33, 135.05))
 }
 
 // https://blog.csdn.net/malimingwq/article/details/114950050
