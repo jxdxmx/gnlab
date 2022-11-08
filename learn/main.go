@@ -7,11 +7,15 @@ import (
 )
 
 func main() {
-	type PersistentStatus int
-	const (
-		PersistentStatusOK PersistentStatus = 10 // 持久化OK
-	)
-	fmt.Println(PersistentStatus(5))
+	var m = map[string]interface{}{"a": "3"}
+	fmt.Println(m["xx"].(string))
+
+	//type PersistentStatus int
+	//const (
+	//	PersistentStatusOK PersistentStatus = 10 // 持久化OK
+	//)
+	//fmt.Println(PersistentStatus(5))
+
 	//eg := errgroup.Group{}
 	////var arr = []string{"h1", "h2", "h3"}
 	////for _, s := range arr {

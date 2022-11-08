@@ -14,9 +14,10 @@ const (
 
 // wgs84ToGcj02 84 to 火星坐标系 (GCJ-02) World Geodetic System ==> Mars Geodetic System
 func wgs84ToGcj02(lat84, lng84 float64) (lat02, lng02 float64) {
-	if outOfChina(lat84, lng84) {
-		return lat84, lng84
-	}
+	// 前端固定传02地址到后端，所以不需要判断是否是国内地址
+	//if outOfChina(lat84, lng84) {
+	//	return lat84, lng84
+	//}
 	dLat := transformLat(lng84-105.0, lat84-35.0)
 	dLng := transformLng(lng84-105.0, lat84-35.0)
 	radLat := lat84 / 180.0 * math.Pi
@@ -30,9 +31,10 @@ func wgs84ToGcj02(lat84, lng84 float64) (lat02, lng02 float64) {
 
 // gcj02ToWgs84 火星坐标系 (GCJ-02) to 84
 func gcj02ToWgs84(lat02, lng02 float64) (lat84, lng84 float64) {
-	if outOfChina(lat02, lng02) {
-		return lat02, lng02
-	}
+	// 前端固定传02地址到后端，所以不需要判断是否是国内地址
+	//if outOfChina(lat02, lng02) {
+	//	return lat02, lng02
+	//}
 	dLat := transformLat(lng02-105.0, lat02-35.0)
 	dLng := transformLng(lng02-105.0, lat02-35.0)
 	radLat := lat02 / 180.0 * math.Pi

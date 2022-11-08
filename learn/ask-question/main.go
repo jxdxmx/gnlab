@@ -12,23 +12,30 @@ func main() {
 	//lng2 := 113.5826193044
 	//fmt.Println(GetDistance(lat1, lng1, lat2, lng2))
 
-	lat02 := 23.1378010917
-	lng02 := 113.4022203113
-	fmt.Println("02：", lat02, lng02)
-	lat84, lng84 := gcj02ToWgs84(lat02, lng02)
-	fmt.Println("84：", lat84, lng84)
-	lat02_2, lng02_2 := wgs84ToGcj02(lat84, lng84)
-	fmt.Println("02-2：", lat02_2, lng02_2)
-	lat84_2, lng84_2 := gcj02ToWgs84(lat02_2, lng02_2)
-	fmt.Println("84-2：", lat84_2, lng84_2)
+	//lat02 := 23.1378010917
+	//lng02 := 113.4022203113
+	//fmt.Println("02：", lat02, lng02)
+	//lat84, lng84 := gcj02ToWgs84(lat02, lng02)
+	//fmt.Println("84：", lat84, lng84)
+	//lat02_2, lng02_2 := wgs84ToGcj02(lat84, lng84)
+	//fmt.Println("02-2：", lat02_2, lng02_2)
+	//lat84_2, lng84_2 := gcj02ToWgs84(lat02_2, lng02_2)
+	//fmt.Println("84-2：", lat84_2, lng84_2)
+	//
+	//fmt.Println(GetDistance(lat02, lng02, lat02_2, lng02_2))
+	//fmt.Println(GetDistance(lat84, lng84, lat84_2, lng84_2))
+	//
+	//// 经度范围：73°33′E至135°05′E。
+	//// 纬度范围：3°51′N至53°33′N。
+	//fmt.Println(gcj02ToWgs84(3.51, 73.33))
+	//fmt.Println(gcj02ToWgs84(53.33, 135.05))
+	//fmt.Println(wgs84ToGcj02(30.293899, 120.064952))
 
-	fmt.Println(GetDistance(lat02, lng02, lat02_2, lng02_2))
-	fmt.Println(GetDistance(lat84, lng84, lat84_2, lng84_2))
+	// 84坐标 latitude":30.293899,"longitude":120.064952
+	// =>02坐标 30.291606341928432 120.06976537001471
+	// 腾讯api返回的坐标 "lat": 30.291524,"lng": 120.069226  ，应该是02坐标
+	fmt.Println(GetDistance(30.291524, 120.069226, 30.291606341928432, 120.06976537001471))
 
-	// 经度范围：73°33′E至135°05′E。
-	// 纬度范围：3°51′N至53°33′N。
-	fmt.Println(gcj02ToWgs84(3.51, 73.33))
-	fmt.Println(gcj02ToWgs84(53.33, 135.05))
 }
 
 // https://blog.csdn.net/malimingwq/article/details/114950050
