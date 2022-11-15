@@ -1,7 +1,13 @@
 package main
 
-func main() {
+import (
+	"fmt"
+	"git.gnlab.com/duohao/share.git/hashids"
+)
 
+func main() {
+	noteId, _ := hashids.DecodeNoteID("oYjdYDfkne")
+	fmt.Println("note id :", noteId)
 }
 
 //fmt.Println("hello world1")
