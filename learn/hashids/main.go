@@ -2,12 +2,39 @@ package main
 
 import (
 	"fmt"
+	"git.gnlab.com/duohao/share.git/crypto_helper"
 	"git.gnlab.com/duohao/share.git/hashids"
 )
 
 func main() {
-	noteId, _ := hashids.DecodeNoteID("oYjdYDfkne")
-	fmt.Println("note id :", noteId)
+	noteId, err := hashids.DecodeNoteID("L6Q6z4GMQR")
+	fmt.Println("note id :", noteId, err)
+	//fmt.Println(hashids.EncodeNoteID(1009177))
+
+	//brandID, err := hashids.DecodeUserID("EZYxdVxqYR")
+	//fmt.Println("user id", brandID, err)
+
+	brandID, err := hashids.DecodeBrandID("O5YO6byx7e")
+	fmt.Println("brand id", brandID, err)
+
+	brandInfoID, err := hashids.DecodeBrandInfoID("RoqnO0bMZY")
+	fmt.Println("brand info id", brandInfoID, err)
+
+	//commentID, err := hashids.DecodeCommentID("DLx3JYVGOp")
+	//fmt.Println("comment id", commentID, err)
+
+	// genSessionKey 构造session，redis中的值
+	// u:1060592 {"nick":"云惜客服佩佩（9:30～18:30）","wechat_ex":1670405449}
+	//fmt.Println("token key:", genSessionKey(1060592, 1670405449))
+
+	fmt.Println("encode brand_info_id :")
+	fmt.Println(hashids.EncodeBrandInfoID(420734))
+}
+
+func genSessionKey(userId int64, expireAt int64) string {
+	encrypt := fmt.Sprintf("%d:%d", userId, expireAt)
+	key, _ := crypto_helper.EncryptUserKey(encrypt)
+	return "w:" + key
 }
 
 //fmt.Println("hello world1")

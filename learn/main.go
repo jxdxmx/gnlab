@@ -6,9 +6,31 @@ import (
 	"math/big"
 )
 
+func getList() []int64 {
+	return nil
+}
+
+// SubStrEllipsis 截取字符串，如果原字符串超长，返回时拼接"..."
+func SubStrEllipsis(s string, length int) string {
+	var rs = []rune(s)
+	if len(rs) <= length {
+		return string(rs)
+	}
+	return string(rs[:length]) + "..."
+}
+
 func main() {
-	var m = map[string]interface{}{"a": "3"}
-	fmt.Println(m["xx"].(string))
+	fmt.Println(SubStrEllipsis("回复评论", 3))
+	str := "CommentReply 回复评论"
+	fmt.Println(SubStrEllipsis(str, 16))
+	fmt.Println(SubStrEllipsis(str, 17))
+	fmt.Println(SubStrEllipsis(str, 20))
+
+	//var ids = []int64{1, 2, 3}
+	//ids = append(ids, getList()...)
+	//fmt.Println(ids)
+	//var m = map[string]interface{}{"a": "3"}
+	//fmt.Println(m["xx"].(string))
 
 	//type PersistentStatus int
 	//const (
