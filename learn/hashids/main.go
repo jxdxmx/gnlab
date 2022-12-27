@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	noteId, err := hashids.DecodeNoteID("L6Q6z4GMQR")
+	noteId, err := hashids.DecodeNoteID("q48wPeJqQp")
 	fmt.Println("note id :", noteId, err)
 	//fmt.Println(hashids.EncodeNoteID(1009177))
 
@@ -29,6 +29,51 @@ func main() {
 
 	fmt.Println("encode brand_info_id :")
 	fmt.Println(hashids.EncodeBrandInfoID(420734))
+}
+
+func test() {
+	//输入：s = "the sky is blue"
+	//输出："blue is sky the"
+	//示例 2：
+	//
+	//输入：s = "  hello world  "
+	//输出："world hello"
+	//解释：反转后的字符串中不能存在前导空格和尾随空格。
+	//示例 3：
+	//
+	//输入：s = "a good   example"
+	//输出："example good a"
+	//解释：如果两个单词间有多余的空格，反转后的字符串需要将单词间的空格减少到仅有一个。
+	//
+
+}
+
+//示例 1：
+//
+//输入：s = "Let's take LeetCode contest"
+//输出："s'teL ekat edoCteeL tsetnoc"
+//示例 2:
+//
+//输入： s = "God Ding"
+//输出："doG gniD"
+
+//func reverseWords(s string) string {
+//	var ans string
+//	start := -1
+//	i := 0
+//	for ; i < len(s); i++ {
+//
+//	}
+//}
+
+func reverse(bs []byte) []byte {
+	i, j := 0, len(bs)-1
+	for i < j {
+		bs[i], bs[j] = bs[j], bs[i]
+		i++
+		j--
+	}
+	return bs
 }
 
 func genSessionKey(userId int64, expireAt int64) string {
